@@ -1,0 +1,32 @@
+.card {
+    padding: 10px 15px;
+    text-align: left;
+
+  }
+
+  .book {
+    width: 140px;
+  }
+
+  .bookTop {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .bookCover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background: #eee;
+  }
+
+  .bookTitle,
+.bookAuthors {
+  font-size: 0.8em;
+}
+.bookTitle {
+  margin-top: 10px;
+}
+.bookAuthors {
+  color: #999;
+}
