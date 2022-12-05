@@ -1,11 +1,10 @@
 
 // import classes from './Book.module.css'
 
+import { BookShelfChangerType } from "./types";
 
-interface BookShelfChangerType {
-  onChangeSelectHandeler: (e: any) => void,
-  shelf: string | undefined
-}
+
+
 const BookShelfChanger = ({onChangeSelectHandeler, shelf}: BookShelfChangerType) => {
 
 

@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import classes from './Book.module.css'
 import BookShelfChanger from '../bookShelfChanger/BookShelfChanger';
 import { BookProps } from './types';
-import { connect } from 'react-redux';
-import { apiUpdateOne } from '../../actions';
 
 
 const Book = ({imageLinks, title, authors, id, shelf, apiUpdateOne, book}: BookProps) => {
@@ -31,15 +29,15 @@ const Book = ({imageLinks, title, authors, id, shelf, apiUpdateOne, book}: BookP
           height: 188,
           backgroundImage:
             `url(${getURLImg()})`,
-        }}
-      ></Link>
+        }}></Link>
       <BookShelfChanger onChangeSelectHandeler ={onChangeSelectHandeler} shelf={shelf}/>
     </div>
-    <div className={classes.bookTitle}>{title}</div>
-    <div className={classes.bookAuthors}>{authors}</div>
+    <div className={classes.bookTitle} >{title}</div>
+    <div className={classes.bookAuthors} >{authors}</div>
   </div>
   </li>
   );
 };
 
-export default connect(null, {apiUpdateOne})(Book);
+export default Book;
+

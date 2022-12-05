@@ -2,11 +2,8 @@ import "../../App.css";
 import Header from "../header/Header";
 import Shelf from "../shelf/Shelf";
 import { useEffect } from "react";
-import { connect } from "react-redux";
-import { AppState } from "../../store/rootStore";
-import { apiRequestAll } from "../../actions";
-import { LinkProps, LinkStateProps } from "./types";
 import { Link } from 'react-router-dom';
+import { LinkProps } from "./types";
 
 
 
@@ -53,10 +50,6 @@ const Home = ({ apiRequestAll , data }: LinkProps) => {
     </div>
   );
 };
-const mapStateToProps = (state: AppState): LinkStateProps => {
-  return {
-    data: state.data.allBooks,
-  };
-};
 
-export default connect(mapStateToProps, { apiRequestAll })(Home);
+
+export default Home;

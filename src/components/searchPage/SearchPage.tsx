@@ -4,8 +4,8 @@ import { BookDataType } from '../../actions/types';
 import { AppState } from '../../store/rootStore';
 import { connect } from 'react-redux';
 import { apiSearchForBook } from '../../actions';
-import Book from '../book/Book';
 import { useEffect } from 'react';
+import ConnectedBook from '../book/ConnectedBook';
 
 type SearchProps = {
   results: BookDataType[] | [],
@@ -40,7 +40,7 @@ const SearchPage = ({results,apiSearchForBook }: SearchProps) => {
     </div>
     <div className="search-books-results">
     <ol className={classes.grid}>
-        {results.map(book => <Book   key={book.id} title={book.title} authors={book.authors} imageLinks={book.imageLinks} id={book.id} shelf={book.shelf} book={book}/>)}
+        {results.map(book => <ConnectedBook   key={book.id} title={book.title} authors={book.authors} imageLinks={book.imageLinks} id={book.id} shelf={book.shelf} book={book}/>)}
       </ol>
     </div>
   </div>

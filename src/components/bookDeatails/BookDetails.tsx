@@ -1,10 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { connect } from "react-redux";
-import { AppState } from "../../store/rootStore";
-import { apiRequestOne } from "../../actions";
-import {BookDetailsProps, BookDetailsSatetProp } from "./types";
-import Book from "../book/Book";
+import {BookDetailsProps } from "./types";
+import ConnectedBook from "../book/ConnectedBook";
 
 const BookDetails = ({ book, apiRequestOne }: BookDetailsProps) => {
   const { id } = useParams();
@@ -32,7 +29,7 @@ const BookDetails = ({ book, apiRequestOne }: BookDetailsProps) => {
     <>
     <h1 style={{
       padding: "20px",}}>{book?.title}</h1>
-     <Book title={book.title} authors={book.authors} imageLinks={book.imageLinks} id={book.id} shelf={book.shelf} book={book}/>
+     <ConnectedBook title={book.title} authors={book.authors} imageLinks={book.imageLinks} id={book.id} shelf={book.shelf} book={book}/>
      <p style={{
       padding: "40px",
       color: 'black',
@@ -43,10 +40,4 @@ const BookDetails = ({ book, apiRequestOne }: BookDetailsProps) => {
      </div>);
 };
 
-const mapStateToProps = (state: AppState ): BookDetailsSatetProp => {
-  return {
-    book: state.data.selectedBook,
-  };
-};
-
-export default connect(mapStateToProps, { apiRequestOne })(BookDetails);
+export default BookDetails;
