@@ -2,8 +2,8 @@ import ConnectedBookDetails from './components/bookDeatails/ConnectedBookDetails
 import { Provider } from "react-redux";
 import { store } from "./store/rootStore";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SearchPage from "./components/searchPage/SearchPage";
 import ConnectedHome from "./components/homePage/ConnectedHome";
+import ConnectedSearchPage from './components/searchPage/ConnectedSearchPage';
 
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
          <Route path="/:i"  element={<p>nor found</p>} />   {/* remove to add page not found later*/}
 
          <Route path="/show/:id" element={<ConnectedBookDetails/>} />
-         <Route path="/search" element={<SearchPage/>} />
+         <Route path="/search" element={<ConnectedSearchPage/>} />
      </Routes>
    </Router>
  </Provider>)

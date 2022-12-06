@@ -1,28 +1,27 @@
-import React from "react";
-import { Provider } from "react-redux";
-import renderer from "react-test-renderer";
-import configureStore from "redux-mock-store";
-import SearchPage from "../SearchPage";
-import { createStore, applyMiddleware } from "redux";
-import { AppState } from "../../../store/rootStore";
-import { AppActions } from "../../../actions/types";
-import RootReducer from "../../../rducers";
-import { render, screen } from "@testing-library/react";
-import {allBooksResponse}  from '../../../rducers/test/reducers.test'
-import { recivedBookSearchResults } from "../../../actions";
-import { BrowserRouter as Router } from "react-router-dom";
-import thunk, {ThunkMiddleware} from "redux-thunk"
+import { shallow, ShallowWrapper } from "enzyme";
+import { allBooksResponse } from "../../../rducers/test/reducers.test";
+import SearchPage from '../SearchPage';
 
-const store = createStore<AppState, AppActions, {}, {}>(RootReducer,applyMiddleware(thunk as ThunkMiddleware<AppState, AppActions>));
+const initialState = {
+  results: [],
+  apiSearchForBook: expect.any(Function),
+};
+describe("Search Page test", () => {
+  let component: ShallowWrapper;
+  beforeEach(() => {
+    component = shallow(<SearchPage {...initialState} />);
+  });
 
-describe("first", () => {
-    renderer.create(
-    <Provider store={store}>
-         <Router>
-      <SearchPage />
-      </Router>
-    </Provider>);
-  it("first render", () => {});
-store.dispatch(recivedBookSearchResults(allBooksResponse));
-// expect(screen.getAllByLabelText('book')).toHaveLength(3);
+  it("renders initial values", () => {
+    expect(component.find(".close-search").text()).toBe("Close");
+    expect(component.find(".search-books-input-wrapper input").at(0).props().placeholder).toEqual("Search by title, author, or ISBN");
+    expect(component.find(".grid").children().length).toEqual(0);
+  });
+
+  it("renders 3 books when we set values of the results to 3 books", () => {
+    component.setProps({results: allBooksResponse})
+    expect(component.find(".grid").children().length).toEqual(3);
+  });
+
+
 });

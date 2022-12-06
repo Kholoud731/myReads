@@ -1,16 +1,9 @@
 import classes from '../shelf/Shelf.module.css'
 import { Link } from 'react-router-dom';
-import { BookDataType } from '../../actions/types';
-import { AppState } from '../../store/rootStore';
-import { connect } from 'react-redux';
-import { apiSearchForBook } from '../../actions';
 import { useEffect } from 'react';
 import ConnectedBook from '../book/ConnectedBook';
+import { SearchProps } from './types';
 
-type SearchProps = {
-  results: BookDataType[] | [],
-  apiSearchForBook: (data: string)=> void
-}
 
 const SearchPage = ({results,apiSearchForBook }: SearchProps) => {
 
@@ -47,11 +40,6 @@ const SearchPage = ({results,apiSearchForBook }: SearchProps) => {
   );
 };
 
-const mapStateToProps = (state: AppState) => {
-  return {
-    results: state.data.searchReuslts
-  }
-}
 
-export default connect(mapStateToProps,{apiSearchForBook})(SearchPage);
+export default SearchPage;
 

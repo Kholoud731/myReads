@@ -23,7 +23,7 @@ const Home = ({ apiRequestAll , data }: LinkProps) => {
         <div className="list-books">
           <Header />
           <div className="list-books-content">
-            {data && (
+            {data?.length && (
               <div>
                 <Shelf
                   title="Currently Reading"

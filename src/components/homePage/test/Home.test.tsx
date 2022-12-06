@@ -15,13 +15,17 @@ describe("Book Details test", () => {
   it("renders initial values", () => {
     expect(component.find(".list-books").childAt(0).text()).toBe("<Header />");
     expect(component.find(".open-search").childAt(0).text()).toBe("Add a book");
-    expect(component.find(".list-books-content").childAt(0).children().length).toEqual(3);
-
-    expect(component.find(".list-books-content").childAt(0).childAt(0).props()).toEqual({title:"Currently Reading", books: []});
-    expect(component.find(".list-books-content").childAt(0).childAt(1).props()).toEqual({title:"Read", books:[]});
-    expect(component.find(".list-books-content").childAt(0).childAt(2).props()).toEqual({title:"Want to Read", books:[]});
+    expect(component.find(".list-books-content").childAt(0).children().length).toEqual(0);
 
     
   });
+
+  it("renders 3 shelf components oncw we have data passes as a props", () => {
+    component.setProps({data: allBooksResponse})
+    expect(component.find(".list-books").childAt(0).text()).toBe("<Header />");
+    expect(component.find(".open-search").childAt(0).text()).toBe("Add a book");
+    expect(component.find(".list-books-content").childAt(0).children().length).toEqual(3);
+    
+  })
 
 });
