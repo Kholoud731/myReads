@@ -61,14 +61,5 @@
     "@types/redux-thunk": "^2.1.0",
     "identity-obj-proxy": "^3.0.0",
     "redux-mock-store": "^1.5.4"
-  },
-  "jest": {
-    "testEnviroment": "jsdom",
-    "setupFilesAfterEnv": [
-      "<rootDir>/setupTests.ts"
-    ],
-    "moduleNameMapper": {
-      "\\.(cc|less)$": "identity-obj-proxy"
-    }
   }
 }
